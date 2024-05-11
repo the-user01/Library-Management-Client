@@ -1,9 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
-
+import { GoogleAuthProvider } from "firebase/auth";
 
 export const AuthContext = createContext(null)
 
@@ -12,7 +11,6 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loader, setLoader] = useState(true);
 
-    
     /* *** Register User ****/
     const createUser = (email, password) => {
         setLoader(true);
@@ -20,7 +18,7 @@ const AuthProvider = ({ children }) => {
     }
 
     /* *** User Login *****/
-    const signIn = (email, password) =>{
+    const signIn = (email, password) => {
         setLoader(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
@@ -28,14 +26,23 @@ const AuthProvider = ({ children }) => {
     /* *******  Google Sign In ********  */
     const googleProvider = new GoogleAuthProvider();
 
-    const googleSignIn = () =>{
+    const googleSignIn = () => {
         setLoader(true);
         return signInWithPopup(auth, googleProvider)
     }
 
 
+    /* *** User Profile Update **** */
+
+    const updateUser = (name, photoUrl) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photoUrl,
+        })
+    }
+
     /* **** User Sign Out **** */
-    const logOut = () =>{
+    const logOut = () => {
         setLoader(true);
         return signOut(auth);
     }
@@ -43,17 +50,17 @@ const AuthProvider = ({ children }) => {
 
     /* *** Observing the user **** */
 
-    useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth, currentUser =>{
-            setUser(currentUser)
-            setLoader(false);
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
+                setUser(currentUser)
+                setLoader(false);
         })
 
-        return ()=>{
+        return () => {
             unSubscribe()
         }
 
-    } ,[])
+    }, [])
 
 
     const authInfo = {
@@ -62,7 +69,8 @@ const AuthProvider = ({ children }) => {
         createUser,
         signIn,
         googleSignIn,
-        logOut
+        updateUser,
+        logOut,
     }
 
     return (

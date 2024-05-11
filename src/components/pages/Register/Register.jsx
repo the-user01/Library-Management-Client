@@ -1,15 +1,16 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useAuth from "../../../hooks/useAuth";
 
 
 const Register = () => {
 
-    const { createUser, updateUser } = useContext(AuthContext)
+    const { createUser, updateUser } = useAuth()
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -42,10 +43,14 @@ const Register = () => {
             .then(() => {
                 
                 updateUser(name, photoUrl)
-                .then(() => console.log("Profile Updated"))
+                .then(() => {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Success",
+                        text: "Registration Successful",
+                    });
+                })
                 .catch(error => console.log(error))
-                
-                return toast.success("User Registration Successful");
             })
             .catch(error => console.log(error))
 

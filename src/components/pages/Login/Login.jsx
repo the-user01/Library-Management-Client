@@ -1,17 +1,17 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../provider/AuthProvider";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
+import Swal from "sweetalert2";
+import useAuth from "../../../hooks/useAuth";
 
 
 const Login = () => {
 
-    const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
+    const { signIn, googleSignIn } = useAuth();
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -30,8 +30,13 @@ const Login = () => {
         signIn(email, password)
 
             .then(() => {
+
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: "Login Successful",
+                });
                 navigate(location?.state ? location.state : '/');
-                toast.success("Login Successful");
             })
             .catch(() => toast.error("Invalid Email or Password"))
 
@@ -44,22 +49,16 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleSignIn()
             .then(() => {
-                navigate(location?.state ? location.state : '/');
-                toast.success("Login Successful");
-            })
-            .catch(error => console.log(error))
-    }
 
-    const handleGithubLogin = () => {
-        githubSignIn()
-            .then(() => {
-                toast.success("Login Successful");
-
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: "Login Successful",
+                });
                 navigate(location?.state ? location.state : '/');
             })
             .catch(error => console.log(error))
     }
-
 
     return (
         <div>
@@ -110,10 +109,6 @@ const Login = () => {
 
                         <div className="mx-2 mb-4">
                             <button className="btn btn-outline btn-success w-full text-lg" onClick={handleGoogleLogin}><FaGoogle /> Google</button>
-                        </div>
-
-                        <div className="mx-2">
-                            <button className="btn btn-outline btn-warning w-full text-lg" onClick={handleGithubLogin}><FaGithub /> Github</button>
                         </div>
 
                         <div className="text-center p-4">

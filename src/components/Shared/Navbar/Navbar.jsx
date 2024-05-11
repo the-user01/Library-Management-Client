@@ -1,19 +1,18 @@
-import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../../../provider/AuthProvider";
 import demoImg from '../../../assets/user.png';
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
 
-    const { user, logOut, loader } = useContext(AuthContext);
+    const { user, logOut, loader } = useAuth();
 
     const navList = <>
         <li className="mr-4"><NavLink to='/'>Home</NavLink></li>
-        <li className="mr-4"><NavLink to='/about'>About</NavLink></li>
-
+        <li className="mr-4"><NavLink to='/all-books'>All Books</NavLink></li>
         {
             user && <>
-                <li className="mr-4"><NavLink to='/userProfile'>User Profile</NavLink></li>
+                <li className="mr-4"><NavLink to='/add-books'>Add Books</NavLink></li>
+                <li className="mr-4"><NavLink to='/borrowed-books'>Borrowed Books</NavLink></li>
             </>
         }
     </>

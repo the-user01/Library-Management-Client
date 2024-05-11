@@ -1,8 +1,31 @@
 import { Link, NavLink } from "react-router-dom";
 import demoImg from '../../../assets/user.png';
 import useAuth from "../../../hooks/useAuth";
+import { useEffect, useState } from "react";
+import { IoMoonOutline } from "react-icons/io5";
+import { FiSun } from "react-icons/fi";
 
 const Navbar = () => {
+
+    const [theme, setTheme] = useState(
+        localStorage.getItem('theme') ? localStorage.getItem("theme") : "light"
+    );
+
+    const handleChange = e => {
+        if (e.target.checked) {
+            setTheme("dark");
+        }
+        else {
+            setTheme("light");
+        }
+    }
+
+    useEffect(() => {
+        localStorage.setItem("theme", theme);
+        const localTheme = localStorage.getItem("theme");
+        document.querySelector('html').setAttribute("data-theme", localTheme);
+    }, [theme])
+
 
     const { user, logOut, loader } = useAuth();
 
@@ -72,6 +95,21 @@ const Navbar = () => {
                                 </>}
                         </>
                 }
+
+                <div>
+                    <label className="swap swap-rotate">
+
+                        {/* this hidden checkbox controls the state */}
+                        <input type="checkbox" onChange={handleChange} className="theme-controller" value="synthwave" />
+                       
+                        {/* sun icon */}
+                        <FiSun className="swap-off h-7 w-7 md:w-10 md:h-10 ml-4 mt-2 md:mt-0"/>
+
+                        {/* moon icon */}
+                        <IoMoonOutline className="swap-on fill-current  h-7 w-7 md:w-10 md:h-10 ml-4 mt-2 md:mt-0"/>
+
+                    </label>
+                </div>
             </div>
         </div>
     );

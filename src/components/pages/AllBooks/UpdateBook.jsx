@@ -1,10 +1,14 @@
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import useAxios from "../../../hooks/useAxios";
+import { useLoaderData } from "react-router-dom";
 
 const UpdateBook = () => {
-
     const axiosInstance = useAxios();
+
+    const loader = useLoaderData();
+    
+    console.log(loader);
 
     const handleUpdateBooks = e => {
         e.preventDefault();
@@ -19,7 +23,7 @@ const UpdateBook = () => {
         const description = form.description.value;
         const photo = form.photo.value;
 
-        axiosInstance.put('/update-book', {
+        axiosInstance.put(`/update-book/`, {
             book_name,
             book_quantity,
             author_name,

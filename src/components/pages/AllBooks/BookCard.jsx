@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const BookCard = ({book}) => {
-    const {photo, book_name, author_name, category, rating} = book;
+    const {_id,photo, book_name, author_name, category, rating} = book;
 
     return (
         <div className="card w-96 bg-white text-black shadow-xl">
@@ -16,7 +17,7 @@ const BookCard = ({book}) => {
                     }</p>
                 </div>
                 <div className="card-actions mt-4">
-                    <button className="btn btn-outline btn-primary w-full">Update</button>
+                   <Link to={`/update-book/${_id}`} className="btn btn-outline btn-primary w-full"><button>Update</button></Link>
                 </div>
             </div>
         </div>

@@ -1,12 +1,12 @@
-import { Helmet } from 'react-helmet-async';
-import useAxios from '../../../hooks/useAxios';
-import Swal from 'sweetalert2';
+import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
+import useAxios from "../../../hooks/useAxios";
 
-const AddBooks = () => {
+const UpdateBook = () => {
 
     const axiosInstance = useAxios();
 
-    const handleAddBooks = e => {
+    const handleUpdateBooks = e => {
         e.preventDefault();
 
         const form = e.target;
@@ -19,7 +19,7 @@ const AddBooks = () => {
         const description = form.description.value;
         const photo = form.photo.value;
 
-        axiosInstance.post('/all-books', {
+        axiosInstance.put('/update-book', {
             book_name,
             book_quantity,
             author_name,
@@ -32,7 +32,7 @@ const AddBooks = () => {
                 Swal.fire({
                     icon: "success",
                     title: "Success",
-                    text: "Book Added Successfully",
+                    text: "Book Added Updated",
                 });
 
             })
@@ -40,22 +40,16 @@ const AddBooks = () => {
                 console.error(error);
             })
 
-        form.reset();
-
     }
-
 
     return (
         <>
             <Helmet>
-                <title>Add Books</title>
+                <title>Update Book</title>
             </Helmet>
-            <div className="bg-gray-100 mt-6 p-16">
-                <div>
-                    <h2 className='font-extrabold text-center text-4xl md:text-4xl'>Add Book</h2>
-                </div>
 
-                <form className="space-y-4 mt-6" onSubmit={handleAddBooks}>
+            <div>
+                <form className="space-y-4 mt-6" onSubmit={handleUpdateBooks}>
                     {/* Form Row */}
                     <div className="md:flex items-center space-y-4 md:space-y-0">
                         <div className="form-control md:w-1/2">
@@ -150,7 +144,7 @@ const AddBooks = () => {
                             </label>
                         </div>
                     </div>
-                    <input type="submit" value="Add Book" className="btn btn-block bg-primary text-white" />
+                    <input type="submit" value="Update Book Info" className="btn btn-block bg-primary text-white" />
                 </form>
             </div>
 
@@ -158,4 +152,4 @@ const AddBooks = () => {
     );
 };
 
-export default AddBooks;
+export default UpdateBook;

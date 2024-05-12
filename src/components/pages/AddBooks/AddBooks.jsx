@@ -6,33 +6,30 @@ const AddBooks = () => {
             <Helmet>
                 <title>Add Books</title>
             </Helmet>
-            <div className="bg-gray-100 mt-6 p-24">
+            <div className="bg-gray-100 mt-6 p-16">
+                <div>
+                    <h2 className='font-extrabold text-center text-4xl md:text-4xl'>Add Book</h2>
+                </div>
 
                 <form className="space-y-4 mt-6" >
                     {/* Form Row */}
                     <div className="md:flex items-center space-y-4 md:space-y-0">
                         <div className="form-control md:w-1/2">
                             <label className="label">
-                                <span className="label-text text-base">Spot Name</span>
+                                <span className="label-text text-base">Book Name</span>
                             </label>
                             <label className="input-group ">
-                                <input type="text" name="spot_name" placeholder="Spot Name" className="input input-bordered w-full border-2 border-blue-300" />
+                                <input type="text" name="book_name" placeholder="Book Name" className="input input-bordered w-full border-2 border-blue-300" />
                             </label>
                         </div>
 
                         <div className=" md:w-1/2 md:ml-4">
                             <label className="label">
-                                <span className="label-text text-base">Country Name</span>
+                                <span className="label-text text-base">Book Quantity</span>
                             </label>
-                            <select className="select border-2 border-blue-300 w-full" name='country_name'>
-                                <option></option>
-                                <option>Bangladesh</option>
-                                <option>Thailand</option>
-                                <option>Indonesia</option>
-                                <option>Malaysia</option>
-                                <option>Vietnam</option>
-                                <option>Cambodia</option>
-                            </select>
+                            <label className="input-group ">
+                                <input type="number" name="book_quantity" placeholder="Book Quantity" className="input input-bordered w-full border-2 border-blue-300" />
+                            </label>
                         </div>
                     </div>
 
@@ -40,10 +37,10 @@ const AddBooks = () => {
                     <div className="md:flex space-y-4 md:space-y-0">
                         <div className="form-control md:w-1/2">
                             <label className="label">
-                                <span className="label-text text-base">Location</span>
+                                <span className="label-text text-base">Author Name</span>
                             </label>
                             <label className="input-group ">
-                                <input type="text" name="location" placeholder="Location" className="input input-bordered w-full border-2 border-blue-300" />
+                                <input type="text" name="author_name" placeholder="Author Name" className="input input-bordered w-full border-2 border-blue-300" />
                             </label>
                         </div>
 
@@ -108,7 +105,7 @@ const AddBooks = () => {
                     <div className="space-y-4 md:space-y-0" >
                         <div className="form-control w-full">
                             <label className="label">
-                                <span className="label-text text-base">Photo URL</span>
+                                <span className="label-text text-base">Book Image</span>
                             </label>
                             <label className="input-group ">
                                 <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full border-2 border-blue-300" />

@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import useAxios from '../../../hooks/useAxios';
+import Swal from 'sweetalert2';
 
 const AddBooks = () => {
 
@@ -18,7 +19,17 @@ const AddBooks = () => {
         const description = form.description.value;
         const photo = form.photo.value;
 
-        axiosInstance.post('/allBooks',{
+        // const bookInfo = {
+        //     book_name,
+        //     book_quantity,
+        //     author_name,
+        //     category,
+        //     rating,
+        //     description,
+        //     photo,
+        // }
+
+        axiosInstance.post('/all-books', {
             book_name,
             book_quantity,
             author_name,
@@ -27,10 +38,17 @@ const AddBooks = () => {
             description,
             photo,
         })
-        .then(res=> {
-            console.log(res.data);
-        })
+            .then(() => {
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: "Book Added Successfully",
+                });
 
+            })
+            .catch(error => {
+                console.error(error);
+            })
 
         form.reset();
 
@@ -142,7 +160,7 @@ const AddBooks = () => {
                             </label>
                         </div>
                     </div>
-                    <input type="submit" value="Add Spot" className="btn btn-block bg-primary text-white" />
+                    <input type="submit" value="Add Book" className="btn btn-block bg-primary text-white" />
                 </form>
             </div>
 

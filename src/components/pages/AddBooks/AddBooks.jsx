@@ -1,6 +1,9 @@
 import { Helmet } from 'react-helmet-async';
+import useAxios from '../../../hooks/useAxios';
 
 const AddBooks = () => {
+
+    const axiosInstance = useAxios();
 
     const handleAddBooks = e => {
         e.preventDefault();
@@ -15,7 +18,7 @@ const AddBooks = () => {
         const description = form.description.value;
         const photo = form.photo.value;
 
-        const bookInfo = {
+        axiosInstance.post('/allBooks',{
             book_name,
             book_quantity,
             author_name,
@@ -23,9 +26,14 @@ const AddBooks = () => {
             rating,
             description,
             photo,
-        };
+        })
+        .then(res=> {
+            console.log(res.data);
+        })
 
-        console.log(bookInfo);
+
+        form.reset();
+
     }
 
 

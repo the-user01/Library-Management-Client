@@ -1,6 +1,34 @@
 import { Helmet } from 'react-helmet-async';
 
 const AddBooks = () => {
+
+    const handleAddBooks = e => {
+        e.preventDefault();
+
+        const form = e.target;
+
+        const book_name = form.book_name.value;
+        const book_quantity = form.book_quantity.value;
+        const author_name = form.author_name.value;
+        const category = form.category.value;
+        const rating = form.rating.value;
+        const description = form.description.value;
+        const photo = form.photo.value;
+
+        const bookInfo = {
+            book_name,
+            book_quantity,
+            author_name,
+            category,
+            rating,
+            description,
+            photo,
+        };
+
+        console.log(bookInfo);
+    }
+
+
     return (
         <>
             <Helmet>
@@ -11,7 +39,7 @@ const AddBooks = () => {
                     <h2 className='font-extrabold text-center text-4xl md:text-4xl'>Add Book</h2>
                 </div>
 
-                <form className="space-y-4 mt-6" >
+                <form className="space-y-4 mt-6" onSubmit={handleAddBooks}>
                     {/* Form Row */}
                     <div className="md:flex items-center space-y-4 md:space-y-0">
                         <div className="form-control md:w-1/2">
@@ -46,11 +74,26 @@ const AddBooks = () => {
 
                         <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
-                                <span className="label-text text-base">Average Cost</span>
+                                <span className="label-text text-base">Category</span>
                             </label>
-                            <label className="input-group ">
-                                <input type="text" name="average_cost" placeholder="Average Cost" className="input input-bordered w-full border-2 border-blue-300" />
-                            </label>
+                            <select className="select border-2 border-blue-300 w-full" name='category'>
+                                <option></option>
+                                <option>Novel</option>
+                                <option>Thriller</option>
+                                <option>History</option>
+                                <option>Drama</option>
+                                <option>Sci-Fi</option>
+                                <option>Art & Music</option>
+                                <option>Comics</option>
+                                <option>Biography</option>
+                                <option>Computer & Tech</option>
+                                <option>Entertainmant</option>
+                                <option>Health & Fitness</option>
+                                <option>History</option>
+                                <option>Romance</option>
+                                <option>Sports</option>
+                                <option>Travel</option>
+                            </select>
                         </div>
                     </div>
 
@@ -58,31 +101,19 @@ const AddBooks = () => {
                     <div className="md:flex space-y-4 md:space-y-0">
                         <div className="form-control md:w-1/2">
                             <label className="label">
-                                <span className="label-text text-base">Seasonality</span>
+                                <span className="label-text text-base">Rating</span>
                             </label>
-                            <select className="select border-2 border-blue-300 w-full" name='seasonality'>
+                            <select className="select border-2 border-blue-300 w-full" name='rating'>
                                 <option></option>
-                                <option>Spring</option>
-                                <option>Summer</option>
-                                <option>Monsoon</option>
-                                <option>Autumn</option>
-                                <option>winter</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
                             </select>
                         </div>
 
                         <div className="form-control md:w-1/2 md:ml-4">
-                            <label className="label">
-                                <span className="label-text text-base">Travel Time</span>
-                            </label>
-                            <label className="input-group ">
-                                <input type="text" name="travel_time" placeholder="Travel Time" className="input input-bordered w-full border-2 border-blue-300" />
-                            </label>
-                        </div>
-                    </div>
-
-                    {/* Form Row */}
-                    <div className="md:flex space-y-4 md:space-y-0">
-                        <div className="form-control md:w-1/2">
                             <label className="label">
                                 <span className="label-text text-base">Short Description</span>
                             </label>
@@ -90,19 +121,10 @@ const AddBooks = () => {
                                 <input type="text" name="description" placeholder="Short Description" className="input input-bordered w-full border-2 border-blue-300" />
                             </label>
                         </div>
-
-                        <div className="form-control md:w-1/2 md:ml-4">
-                            <label className="label">
-                                <span className="label-text text-base">Total Visitor Per Year</span>
-                            </label>
-                            <label className="input-group ">
-                                <input type="text" name="total_visitor" placeholder="Total Visitor Per Year" className="input input-bordered w-full border-2 border-blue-300" />
-                            </label>
-                        </div>
                     </div>
 
                     {/* Form Row */}
-                    <div className="space-y-4 md:space-y-0" >
+                    <div >
                         <div className="form-control w-full">
                             <label className="label">
                                 <span className="label-text text-base">Book Image</span>

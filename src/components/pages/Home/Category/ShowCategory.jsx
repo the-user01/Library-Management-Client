@@ -29,7 +29,7 @@ const ShowCategory = () => {
             </div>
 
             <div className="flex justify-center my-10 gap-24 md:gap-48">
-                <div className={datalength === booksCategory.length && 'hidden'}>
+                <div className={datalength === booksCategory.length ? 'hidden' : undefined}>
                     <button
                         className="btn btn-outline md:text-base md:px-16"
                         onClick={() => setDatalength(datalength + 3)}

@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import ShowCategory from "../Category/ShowCategory";
 
 const Home = () => {
     return (
@@ -6,7 +7,9 @@ const Home = () => {
             <Helmet>
                 <title>Book-Mania(c) | Home</title>
             </Helmet>
-            This is Home
+            <div>
+                <ShowCategory></ShowCategory>
+            </div>
         </>
     );
 };

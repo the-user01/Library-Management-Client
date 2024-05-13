@@ -5,6 +5,8 @@ import StarRatings from 'react-star-ratings';
 const BookCard = ({ book }) => {
     const { _id, photo, book_name, author_name, category, rating } = book;
 
+
+    
     const starRating = parseInt(rating);
 
     return (

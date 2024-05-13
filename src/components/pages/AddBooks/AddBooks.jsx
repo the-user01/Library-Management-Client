@@ -105,7 +105,7 @@ const AddBooks = () => {
                                 <option>Computer & Tech</option>
                                 <option>Entertainmant</option>
                                 <option>Health & Fitness</option>
-                                <option>History</option>
+                                <option>Crime</option>
                                 <option>Romance</option>
                                 <option>Sports</option>
                                 <option>Travel</option>

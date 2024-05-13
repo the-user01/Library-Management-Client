@@ -46,7 +46,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 shadow-xl">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -56,7 +56,8 @@ const Navbar = () => {
                         {navList}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Book-Mania(c)</a>
+                <img src="https://i.ibb.co/2t6pQmf/photo-1593882100241-aef1449fe351.jpg" alt="" className="h-10 w-10 rounded-full"/>
+                <a className="btn btn-ghost text-sm md:text-xl">Book-Mania(c)</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -72,13 +73,13 @@ const Navbar = () => {
                                     <>
                                         <div className="tooltip tooltip-bottom mr-4" data-tip={user.displayName}>
                                             <div className="avatar">
-                                                <div className="w-12 rounded-full">
+                                                <div className="w-10 md:w-12 rounded-full">
                                                     <img src={user.photoURL} />
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <button className="btn btn-primary" onClick={handleLogOut}>SignOut</button>
+                                        <button className="btn btn-primary btn-sm md:btn-md" onClick={handleLogOut}>SignOut</button>
                                     </>
                             }
                         </>
@@ -101,12 +102,12 @@ const Navbar = () => {
 
                         {/* this hidden checkbox controls the state */}
                         <input type="checkbox" onChange={handleChange} className="theme-controller" value="synthwave" />
-                       
+
                         {/* sun icon */}
-                        <FiSun className="swap-off h-7 w-7 md:w-10 md:h-10 ml-4 mt-2 md:mt-0"/>
+                        <FiSun className="swap-off h-7 w-7 md:w-10 md:h-10 ml-4 mt-2 md:mt-0" />
 
                         {/* moon icon */}
-                        <IoMoonOutline className="swap-on fill-current  h-7 w-7 md:w-10 md:h-10 ml-4 mt-2 md:mt-0"/>
+                        <IoMoonOutline className="swap-on fill-current  h-7 w-7 md:w-10 md:h-10 ml-4 mt-2 md:mt-0" />
 
                     </label>
                 </div>

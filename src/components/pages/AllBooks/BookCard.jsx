@@ -4,8 +4,6 @@ import StarRatings from 'react-star-ratings';
 
 const BookCard = ({ book }) => {
     const { _id, photo, book_name, author_name, category, rating } = book;
-
-
     
     const starRating = parseInt(rating);
 
@@ -16,7 +14,7 @@ const BookCard = ({ book }) => {
                 <h2 className="card-title">{book_name}</h2>
                 <p><span className='font-bold'>Authore:</span> {author_name}</p>
                     <p><span className='font-bold'>Category: </span>{category}</p>
-                    <p><span className='font-bold mr-4'>Rating: </span>
+                    <div><span className='font-bold mr-4'>Rating: </span>
                         <span>
                             <StarRatings
                                 starDimension="20px"
@@ -26,7 +24,7 @@ const BookCard = ({ book }) => {
                                 name='rating'
                             />
                         </span>
-                    </p>
+                    </div>
                 <div className="card-actions mt-4">
                     <Link to={`/update-book/${_id}`} className="btn btn-outline btn-primary w-full"><button>Update</button></Link>
                 </div>

@@ -10,7 +10,7 @@ const CategoryCard = ({ category }) => {
             <div className="card-body">
                 <h2 className="card-title mb-6 font-bold">{category_name}</h2>
                 <div className="card-actions">
-                   <Link className="btn btn-outline btn-accent w-full"> <button >Show Books</button></Link>
+                   <Link to={`/category-books/category/${category_name}`} className="btn btn-outline btn-accent w-full"> <button >Show Books</button></Link>
                 </div>
             </div>
         </div>

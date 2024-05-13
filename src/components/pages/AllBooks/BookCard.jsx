@@ -11,7 +11,7 @@ const BookCard = ({ book }) => {
 
     return (
         <div className="card w-96 bg-white text-black shadow-xl">
-            <figure><img src={photo} alt={book_name} className='h-52 w-full' /></figure>
+            <figure><img src={photo} alt={book_name} className='h-56 w-full' /></figure>
             <div className="card-body">
                 <h2 className="card-title">{book_name}</h2>
                 <p><span className='font-bold'>Authore:</span> {author_name}</p>

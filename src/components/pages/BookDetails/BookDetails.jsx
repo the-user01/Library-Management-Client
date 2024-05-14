@@ -20,6 +20,17 @@ const BookDetails = () => {
         e.preventDefault();
         const form = e.target;
 
+        const currentDate = new Date();
+        const day = currentDate.getDate();
+        const month = currentDate.getMonth() + 1; 
+        const year = currentDate.getFullYear();
+
+        const formattedDay = day < 10 ? '0' + day : day;
+        const formattedMonth = month < 10 ? '0' + month : month;
+
+        const borrowedDate = formattedMonth + '/' + formattedDay + '/' + year;
+
+
         const return_date = form.return_date.value;
         const user_name = form.user_name.value;
         const user_email = form.user_email.value;
@@ -28,6 +39,10 @@ const BookDetails = () => {
             return_date,
             user_name,
             user_email,
+            photo, 
+            book_name,
+            category,
+            borrowedDate
         })
             .then(() => {
                 Swal.fire({
@@ -41,11 +56,14 @@ const BookDetails = () => {
 
             })
         form.reset();
+
+
+
     }
 
-    const closeModal = ()=>{
+    const closeModal = () => {
         const modal = document.getElementById('borrow-book-modal');
-        if(modal){
+        if (modal) {
             modal.close();
         }
     }

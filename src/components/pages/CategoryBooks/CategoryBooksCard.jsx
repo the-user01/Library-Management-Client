@@ -6,7 +6,7 @@ import { useEffect } from "react";
 const CategoryBooksCard = (params) => {
     const {book, setHeader} = params;
 
-    const { photo, book_name, author_name, category, rating } = book;
+    const {_id, photo, book_name, author_name, category, rating } = book;
     const starRating = parseInt(rating);
 
     useEffect(()=>{
@@ -33,7 +33,7 @@ const CategoryBooksCard = (params) => {
                         </span>
                     </div>
                     <div className="card-actions mt-4">
-                        <Link className="btn btn-outline btn-primary w-full"><button>Details</button></Link>
+                        <Link to={`/book-details/${_id}`} className="btn btn-outline btn-primary w-full"><button>Details</button></Link>
                     </div>
                 </div>
             </div>

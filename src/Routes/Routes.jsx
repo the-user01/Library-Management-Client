@@ -12,6 +12,7 @@ import BorrowedBooks from "../components/pages/BorrowedBooks/BorrowedBooks";
 import PrivateRoutes from "./PrivateRoutes";
 import UpdateBook from "../components/pages/AllBooks/UpdateBook";
 import CategoryBooks from "../components/pages/CategoryBooks/CategoryBooks";
+import BookDetails from "../components/pages/BookDetails/BookDetails";
 
   const router = createBrowserRouter([
     {
@@ -38,6 +39,11 @@ import CategoryBooks from "../components/pages/CategoryBooks/CategoryBooks";
         {
             path: '/update-book/:id',
             element: <PrivateRoutes><UpdateBook></UpdateBook></PrivateRoutes>,
+            loader: ({params})=> fetch(`http://localhost:5000/all-books/${params.id}`)
+        },
+        {
+            path: '/book-details/:id',
+            element: <PrivateRoutes><BookDetails></BookDetails></PrivateRoutes>,
             loader: ({params})=> fetch(`http://localhost:5000/all-books/${params.id}`)
         },
         {

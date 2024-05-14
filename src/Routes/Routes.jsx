@@ -39,12 +39,12 @@ import BookDetails from "../components/pages/BookDetails/BookDetails";
         {
             path: '/update-book/:id',
             element: <PrivateRoutes><UpdateBook></UpdateBook></PrivateRoutes>,
-            loader: ({params})=> fetch(`http://localhost:5000/all-books/${params.id}`)
+            loader: ({params})=> fetch(`https://library-management-server-lac.vercel.app/all-books/${params.id}`)
         },
         {
             path: '/book-details/:id',
             element: <PrivateRoutes><BookDetails></BookDetails></PrivateRoutes>,
-            loader: ({params})=> fetch(`http://localhost:5000/all-books/${params.id}`)
+            loader: ({params})=> fetch(`https://library-management-server-lac.vercel.app/all-books/${params.id}`)
         },
         {
             path: '/add-books',
@@ -57,7 +57,7 @@ import BookDetails from "../components/pages/BookDetails/BookDetails";
         {
             path: '/category-books/category/:category',
             element: <PrivateRoutes><CategoryBooks></CategoryBooks></PrivateRoutes>,
-            loader: ({params})=> fetch(`http://localhost:5000/all-books/category/${params.category}`)
+            loader: ({params})=> fetch(`https://library-management-server-lac.vercel.app/all-books/category/${params.category}`)
         },
       ]
     },

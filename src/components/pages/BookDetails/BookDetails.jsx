@@ -16,7 +16,7 @@ const BookDetails = () => {
     const starRating = parseInt(rating);
 
 
-    const handleBorrowBook = e =>{
+    const handleBorrowBook = e => {
         e.preventDefault();
         const form = e.target;
 
@@ -24,19 +24,30 @@ const BookDetails = () => {
         const user_name = form.user_name.value;
         const user_email = form.user_email.value;
 
-        axiosInstance.post('/borrow-books',{
+        axiosInstance.post('/borrowed-books', {
             return_date,
             user_name,
             user_email,
         })
-        .then(()=>{
-            Swal.fire({
-                icon: "success",
-                title: "Success",
-                text: "Book Added Successfully",
-            });
-        })
+            .then(() => {
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: "Book Added Successfully",
+                });
 
+                //reduce book quantity//
+
+
+            })
+        form.reset();
+    }
+
+    const closeModal = ()=>{
+        const modal = document.getElementById('borrow-book-modal');
+        if(modal){
+            modal.close();
+        }
     }
 
     return (
@@ -123,10 +134,10 @@ const BookDetails = () => {
                                                     </label>
                                                     <label className="input-group ">
                                                         <input type="text"
-                                                        name="user_name" 
-                                                        defaultValue={user.displayName}
-                                                        readOnly
-                                                        className="input input-bordered w-full border-2 border-blue-300" />
+                                                            name="user_name"
+                                                            defaultValue={user.displayName}
+                                                            readOnly
+                                                            className="input input-bordered w-full border-2 border-blue-300" />
                                                     </label>
                                                 </div>
 
@@ -135,26 +146,28 @@ const BookDetails = () => {
                                                         <span className="label-text text-base">User Email</span>
                                                     </label>
                                                     <label className="input-group ">
-                                                        <input type="email" 
-                                                        name="user_email" 
-                                                        defaultValue={user.email}
-                                                        readOnly
-                                                        className="input input-bordered w-full border-2 border-blue-300" />
+                                                        <input type="email"
+                                                            name="user_email"
+                                                            defaultValue={user.email}
+                                                            readOnly
+                                                            method="dialog"
+                                                            className="input input-bordered w-full border-2 border-blue-300"
+                                                        />
                                                     </label>
                                                 </div>
                                             </div>
 
                                             {/* Submit form */}
-                                           <input 
-                                           type="submit" 
-                                           value="Submit" 
-                                           className="btn btn-outline btn-success text-lg w-full border-2 border-blue-300" 
-                                           />
+                                            <input
+                                                type="submit"
+                                                value="Submit"
+                                                onClick={closeModal}
+                                                className="btn btn-outline btn-success text-lg w-full border-2 border-blue-300"
+                                            />
                                         </form>
                                     </div>
                                 </div>
                             </dialog>
-
                         </div>
                     </>
             }

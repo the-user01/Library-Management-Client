@@ -107,7 +107,7 @@ const BookDetails = () => {
 
                                         <div className="space-y-2">
                                             <p><span className="text-red-900 font-bold">Category: </span>{category}</p>
-                                            <p><span className="text-red-900 font-bold">Authore: </span>{author_name}</p>
+                                            <p><span className="text-red-900 font-bold">Author: </span>{author_name}</p>
                                         </div>
                                     </div>
 

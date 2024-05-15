@@ -35,7 +35,7 @@ const Navbar = () => {
         {
             user && <>
                 <li className="mr-4"><NavLink to='/add-books'>Add Books</NavLink></li>
-                <li className="mr-4"><NavLink to='/borrowed-books'>Borrowed Books</NavLink></li>
+                <li className="mr-4"><NavLink to={`/borrowed-books/email/${user?.email}`}>Borrowed Books</NavLink></li>
             </>
         }
     </>

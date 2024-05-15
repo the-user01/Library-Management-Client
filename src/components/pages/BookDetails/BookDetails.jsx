@@ -28,7 +28,7 @@ const BookDetails = () => {
         const formattedDay = day < 10 ? '0' + day : day;
         const formattedMonth = month < 10 ? '0' + month : month;
 
-        const borrowedDate = formattedMonth + '/' + formattedDay + '/' + year;
+        const borrowedDate = year + '-' + formattedMonth + '-' + formattedDay;
 
 
         const return_date = form.return_date.value;

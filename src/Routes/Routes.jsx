@@ -51,8 +51,9 @@ import BookDetails from "../components/pages/BookDetails/BookDetails";
             element: <PrivateRoutes><AddBooks></AddBooks></PrivateRoutes>
         },
         {
-            path: '/borrowed-books',
-            element: <PrivateRoutes><BorrowedBooks></BorrowedBooks></PrivateRoutes>
+            path: '/borrowed-books/email/:email',
+            element: <PrivateRoutes><BorrowedBooks></BorrowedBooks></PrivateRoutes>,
+            loader: ({params})=> fetch(`https://library-management-server-lac.vercel.app/borrowed-books/email/${params.email}`)
         },
         {
             path: '/category-books/category/:category',

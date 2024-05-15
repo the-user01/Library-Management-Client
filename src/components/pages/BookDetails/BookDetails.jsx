@@ -16,6 +16,7 @@ const BookDetails = () => {
     const starRating = parseInt(rating);
 
 
+
     const handleBorrowBook = e => {
         e.preventDefault();
         const form = e.target;
@@ -51,14 +52,10 @@ const BookDetails = () => {
                     text: "Book Added Successfully",
                 });
 
-                //reduce book quantity//
-
+                //reduce book quantity
 
             })
         form.reset();
-
-
-
     }
 
     const closeModal = () => {
@@ -73,7 +70,6 @@ const BookDetails = () => {
             <Helmet>
                 <title>{book_name}</title>
             </Helmet>
-
             {
                 loader ?
                     <div className="text-center my-6">

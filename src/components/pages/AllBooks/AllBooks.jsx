@@ -96,10 +96,7 @@ const AllBooks = () => {
                                 </>
                         }
 
-
-
                     </div>
-
             }
 
 

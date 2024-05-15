@@ -17,7 +17,7 @@ const CategoryBooksCard = (params) => {
         <>
             <div className="card w-96 bg-white text-black shadow-xl">
                 <figure><img src={photo} alt={book_name} className='h-56 w-full' /></figure>
-                <div className="card-body">
+                <div className="card-body skeleton w-full rounded-sm">
                     <h2 className="card-title">{book_name}</h2>
                     <p><span className='font-bold'>Author:</span> {author_name}</p>
                     <p><span className='font-bold'>Category: </span>{category}</p>

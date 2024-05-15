@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import { GoogleAuthProvider } from "firebase/auth";
-import axios from "axios";
 
 export const AuthContext = createContext(null)
 
@@ -55,11 +54,6 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
                 setUser(currentUser)
                 setLoader(false);
-                if(currentUser){
-                    const loggedUser = {email: currentUser.email}
-                    axios.post('https://library-management-server-lac.vercel.app/jwt', loggedUser, {withCredentials: true})
-                    .then()
-                }
         })
 
         return () => {

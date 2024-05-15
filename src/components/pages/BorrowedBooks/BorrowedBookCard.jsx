@@ -1,8 +1,38 @@
+import Swal from "sweetalert2";
+import useAxios from "../../../hooks/useAxios";
 
 const BorrowedBookCard = (params) => {
+    const axiosInstance = useAxios();
 
-    const {borrowedBook} = params;
-    const {photo, book_name, category, borrowedDate, return_date} = borrowedBook;
+    const {borrowedBook, borrowedBooks, setBorrowedBooks} = params;
+    const {_id, photo, book_name, category, borrowedDate, return_date} = borrowedBook;
+
+    const handleDelete = () => {
+        Swal.fire({
+            title: "Are you sure, You want to return?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, return it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosInstance.delete(`/borrowed-books/${_id}`)
+                    .then(data => {
+                        if (data.data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Returned!",
+                                text: "Book has been returned.",
+                                icon: "success",
+                            });
+                            const reamining = borrowedBooks.filter(spot => spot._id !== _id);
+                            setBorrowedBooks(reamining);
+                        }
+                    })
+            }
+        });
+    }
 
 
     return (
@@ -24,7 +54,8 @@ const BorrowedBookCard = (params) => {
                 </div>
                 <hr className="border-1 border-gray-400"/>
                 <div className="card-actions mt-2 ">
-                    <button className="btn btn-outline w-full text-lg text-black">Return</button>
+                    <button onClick={()=> handleDelete(_id)}
+                    className="btn btn-outline w-full text-lg text-black">Return</button>
                 </div>
             </div>
         </div>

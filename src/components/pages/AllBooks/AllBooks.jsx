@@ -66,7 +66,7 @@ const AllBooks = () => {
                                     </div>
                                 </> :
                                 <>
-                                    <div className="mt-12">
+                                    <div className="mt-12 px-12">
                                         <div className="overflow-x-auto">
                                             <table className="table">
                                                 {/* head */}

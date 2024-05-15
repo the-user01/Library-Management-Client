@@ -1,8 +1,14 @@
-# React + Vite
+# Book-Mania(c)
+## live-host: https://book-mania-c.web.app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features:
 
-Currently, two official plugins are available:
+- This website has All books section where All books that are added by dfferent user will be shown
+- There is another section to see the books in category wise
+- User can add new books
+- User can see the detailed information of a book
+- User can borrow books and return it.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Selected Category:
+
+- assignment_category_0008 (Library Management System)
